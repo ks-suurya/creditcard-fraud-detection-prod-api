@@ -6,7 +6,7 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
-# create logs dir early (ensures permissions and folder exist)
+# Ensure logs dir exists in image
 RUN mkdir -p /app/logs
 
 COPY requirements.txt .
@@ -15,9 +15,6 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 # copy source and artifacts
 COPY src/ ./src
 COPY artifacts/ ./artifacts
-
-# (optional) do not COPY .env into image for production; for local dev you can
-# COPY .env .env
 
 EXPOSE 8000
 

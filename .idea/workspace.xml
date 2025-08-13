@@ -4,22 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66be975b-2309-4686-ba28-62e935b1aa6b" name="Changes" comment="Initial Commit">
+    <list default="true" id="66be975b-2309-4686-ba28-62e935b1aa6b" name="Changes" comment="Commit 2 : Docker Issues">
+      <change afterPath="$PROJECT_DIR$/ecs-task-role-policy.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/python_3.10_slim.tar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dockerfile.fastapi" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile.fastapi" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/security.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/security.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/handler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/inference-batch.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/inference_batch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/inference-realtime.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/inference_realtime.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inference_batch.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/inference_batch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inference_realtime.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/inference_realtime.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logger.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/preprocessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/preprocessing.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +82,7 @@
       <updated>1755068389607</updated>
       <workItem from="1755068390649" duration="8532000" />
       <workItem from="1755081889343" duration="747000" />
-      <workItem from="1755083728184" duration="3564000" />
+      <workItem from="1755083728184" duration="15187000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -96,7 +92,15 @@
       <option name="project" value="LOCAL" />
       <updated>1755076037030</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Commit 2 : Docker Issues">
+      <option name="closed" value="true" />
+      <created>1755088215066</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1755088215066</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -104,7 +108,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial Commit" />
+    <MESSAGE value="Commit 2 : Docker Issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit 2 : Docker Issues" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/creditcard_fraud_detection_prod_api$one.coverage" NAME="one Coverage Results" MODIFIED="1755069748128" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

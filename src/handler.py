@@ -1,92 +1,43 @@
-import os
+# src/handler.py
 import json
+from src.logger import get_logger
+from src.utils import get_env_var
+from src.inference_realtime import predict_transaction
+from src.inference_batch import invoke_batch_from_dataframe
 import base64
-import io
-import boto3
-import joblib
 import pandas as pd
-from src.preprocessing import preprocess
-from logger import log_info, log_error
-from src.api.security import check_api_key
 
-# Environment variables
-ENDPOINT_NAME = os.getenv("ENDPOINT_NAME")
-S3_BUCKET = os.getenv("S3_BUCKET")
-SCALER_KEY = os.getenv("SCALER_KEY")
-FEATURE_ORDER_KEY = os.getenv("FEATURE_ORDER_KEY")
-AWS_REGION = os.getenv("AWS_REGION", "ap-south-1")
-
-# AWS clients
-s3_client = boto3.client("s3", region_name=AWS_REGION)
-sm_runtime = boto3.client("sagemaker-runtime", region_name=AWS_REGION)
-
-# Artifacts cache
-scaler = None
-feature_order = None
-
-def load_artifacts():
-    global scaler, feature_order
-    if scaler is None:
-        log_info("Loading scaler from S3", key=SCALER_KEY)
-        scaler_obj = s3_client.get_object(Bucket=S3_BUCKET, Key=SCALER_KEY)
-        scaler = joblib.load(io.BytesIO(scaler_obj["Body"].read()))
-    if feature_order is None:
-        log_info("Loading feature order from S3", key=FEATURE_ORDER_KEY)
-        feature_obj = s3_client.get_object(Bucket=S3_BUCKET, Key=FEATURE_ORDER_KEY)
-        feature_order = json.loads(feature_obj["Body"].read().decode("utf-8"))
-
-load_artifacts()
+logger = get_logger(__name__)
 
 def lambda_handler(event, context):
+    """
+    Minimal Lambda handler supporting:
+     - API Gateway direct proxy for single transaction: pass JSON {"features": [ ... ]}
+     - Batch from S3: not implemented here (could implement reading S3 path in event).
+    """
     try:
-        log_info("Received event", event_id=context.aws_request_id)
-
-        # --- Security Check ---
-        if not check_api_key(event.get("headers", {})):
-            log_error("Unauthorized request", event_id=context.aws_request_id)
-            return {"statusCode": 403, "body": json.dumps({"error": "Invalid API key"})}
-
-        # --- Parse Body ---
-        body = event.get("body")
+        body = event.get("body") or event
         if isinstance(body, str):
             body = json.loads(body)
-
-        predictions = []
-
-        # --- Real-time JSON mode ---
-        if "instances" in body:
-            log_info("Processing JSON real-time request")
-            processed = preprocess(body["instances"], scaler, feature_order)
-            payload = "\n".join([",".join(map(str, row)) for row in processed])
-
-        # --- Batch CSV mode ---
-        elif "csv_base64" in body:
-            log_info("Processing batch CSV request")
-            csv_bytes = base64.b64decode(body["csv_base64"])
-            df = pd.read_csv(io.BytesIO(csv_bytes))
-            processed = preprocess(df.to_dict(orient="records"), scaler, feature_order)
-            payload = "\n".join([",".join(map(str, row)) for row in processed])
-
-        else:
-            return {"statusCode": 400, "body": json.dumps({"error": "No valid data provided"})}
-
-        # --- Invoke SageMaker ---
-        response = sm_runtime.invoke_endpoint(
-            EndpointName=ENDPOINT_NAME,
-            ContentType="text/csv",
-            Body=payload
-        )
-
-        preds = [float(p) for p in response["Body"].read().decode("utf-8").strip().split("\n")]
-        predictions.extend(preds)
-
-        log_info("Inference complete", predictions=predictions)
-
-        return {
-            "statusCode": 200,
-            "body": json.dumps({"predictions": predictions})
-        }
-
+        # Single transaction
+        if "features" in body:
+            score = predict_transaction(body["features"])
+            label = 1 if score >= 0.5 else 0
+            return {
+                "statusCode": 200,
+                "body": json.dumps({"probability": score, "label": label}),
+                "headers": {"Content-Type": "application/json"}
+            }
+        # Batch: accept list of transactions
+        if "transactions" in body:
+            probs = [predict_transaction(tx) for tx in body["transactions"]]
+            labels = [1 if p >= 0.5 else 0 for p in probs]
+            return {
+                "statusCode": 200,
+                "body": json.dumps({"probabilities": probs, "labels": labels}),
+                "headers": {"Content-Type": "application/json"}
+            }
+        return {"statusCode": 400, "body": json.dumps({"error": "Missing 'features' or 'transactions'"})}
     except Exception as e:
-        log_error("Unhandled error", error=str(e))
+        logger.exception("Lambda handler error")
         return {"statusCode": 500, "body": json.dumps({"error": str(e)})}

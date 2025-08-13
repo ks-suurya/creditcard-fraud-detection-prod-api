@@ -8,4 +8,5 @@ can be imported using:
 It can also be used to define package-wide variables or imports if needed.
 """
 
+__all__ = ["utils", "logger", "preprocessing", "inference_realtime", "inference_batch", "api"]
 __version__ = "1.0.0"

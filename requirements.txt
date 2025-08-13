@@ -5,7 +5,7 @@ botocore
 # Web framework and API
 fastapi
 uvicorn[standard]
-pydantic
+pydantic>=1.10
 
 # Data processing and analysis
 pandas

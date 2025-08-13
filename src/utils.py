@@ -10,15 +10,15 @@ load_dotenv()
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
-def get_env_var(key: str, default=None, required=True):
+def get_env_var(key: str, default: str = None, required: bool = False) -> str:
     """
-    Fetch environment variable with optional default.
-    If required and missing, raises ValueError.
+    Fetch environment variable. If required and missing, raises ValueError.
     """
     value = os.getenv(key, default)
-    if required and value is None:
+    if required and (value is None or value == ""):
         raise ValueError(f"Missing required environment variable: {key}")
     return value
+
 
 def log_event(event):
     """

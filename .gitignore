@@ -1,0 +1,4 @@
+# Sensitive configuration files
+iam_policy.json
+template.yml
+.env

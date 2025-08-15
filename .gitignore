@@ -2,3 +2,6 @@
 iam_policy.json
 template.yml
 .env
+task-def.json
+taskdef.json
+ecs-task-role-policy.json

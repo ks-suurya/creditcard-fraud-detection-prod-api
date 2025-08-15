@@ -1,0 +1,31 @@
+{
+  "family": "fraud-api-task",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "512",
+  "memory": "1024",
+  "executionRoleArn": "arn:aws:iam::<your-account-id>:role/<your-ecs-execution-role>",
+  "taskRoleArn": "arn:aws:iam::<your-account-id>:role/<your-ecs-task-role>",
+  "containerDefinitions": [
+    {
+      "name": "fraud-api",
+      "image": "<your-account-id>.dkr.ecr.<your-region>.amazonaws.com/fraud-api:<tag>",
+      "portMappings": [
+        { "containerPort": 8000, "hostPort": 8000, "protocol": "tcp" }
+      ],
+      "essential": true,
+      "environment": [
+        { "name": "API_KEY", "value": "<your-random-api-key>" },
+        { "name": "SAGEMAKER_ENDPOINT", "value": "<your-sagemaker-endpoint-name>" }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/fraud-api-task",
+          "awslogs-region": "<your-region>",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ]
+}

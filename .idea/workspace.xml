@@ -4,9 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66be975b-2309-4686-ba28-62e935b1aa6b" name="Changes" comment="Commit 3 : Docker Issues">
+    <list default="true" id="66be975b-2309-4686-ba28-62e935b1aa6b" name="Changes" comment="Commit 4: Upstream Model Error but Sagemaker Component seems to be working...">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile.fastapi" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile.fastapi" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/security.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/security.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inference_batch.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/inference_batch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inference_realtime.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/inference_realtime.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/preprocessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/preprocessing.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +94,7 @@
       <workItem from="1755068390649" duration="8532000" />
       <workItem from="1755081889343" duration="747000" />
       <workItem from="1755083728184" duration="16859000" />
-      <workItem from="1755237589813" duration="4609000" />
+      <workItem from="1755237589813" duration="7104000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -112,7 +120,15 @@
       <option name="project" value="LOCAL" />
       <updated>1755101092851</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Commit 4: Upstream Model Error but Sagemaker Component seems to be working...">
+      <option name="closed" value="true" />
+      <created>1755242409801</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1755242409801</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -133,7 +149,8 @@
     <MESSAGE value="Initial Commit" />
     <MESSAGE value="Commit 2 : Docker Issues" />
     <MESSAGE value="Commit 3 : Docker Issues" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit 3 : Docker Issues" />
+    <MESSAGE value="Commit 4: Upstream Model Error but Sagemaker Component seems to be working..." />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit 4: Upstream Model Error but Sagemaker Component seems to be working..." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/creditcard_fraud_detection_prod_api$one.coverage" NAME="one Coverage Results" MODIFIED="1755069748128" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

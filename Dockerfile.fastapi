@@ -6,13 +6,12 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
-# Ensure logs dir exists in image
+# ensure log dir exists in image
 RUN mkdir -p /app/logs
 
 COPY requirements.txt .
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
-# copy source and artifacts
 COPY src/ ./src
 COPY artifacts/ ./artifacts
 

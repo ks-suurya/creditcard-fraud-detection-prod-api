@@ -6,7 +6,7 @@ API_KEY = get_env_var("API_KEY", "", required=False)
 
 def api_key_auth(x_api_key: str = Header(default="")) -> bool:
     """
-    FastAPI dependency for simple API-Key auth. If API_KEY env var is empty, auth is disabled (dev convenience).
+    Simple API key dependency. If API_KEY is empty, auth is disabled (dev convenience).
     """
     if not API_KEY:
         return True

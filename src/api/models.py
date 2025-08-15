@@ -2,7 +2,7 @@
 from pydantic import BaseModel, Field, conlist
 from typing import List
 
-# 30 features: Time + V1..V28 + Amount
+# Fixed 30-length vector: Time + V1..V28 + Amount
 TransactionVector = conlist(float, min_length=30, max_length=30)
 
 class PredictRequest(BaseModel):

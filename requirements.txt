@@ -1,25 +1,10 @@
-# AWS SDK and cloud services
-boto3
-botocore
-
-# Web framework and API
-fastapi
-uvicorn[standard]
-pydantic>=1.10
-
-# Data processing and analysis
-pandas
-numpy
-
-# Machine learning and model serialization
-joblib
-scikit-learn
-
-# Environment and configuration
-python-dotenv
-
-# Logging (built-in, but good to be explicit about versions)
-# logging is part of standard library
-
-# Type hints and utilities (Python 3.8+ compatibility)
-typing-extensions
+fastapi>=0.78.0
+uvicorn[standard]>=0.18.0
+boto3>=1.26.0
+botocore>=1.29.0
+python-dotenv>=0.21.0
+pydantic>=1.8
+pandas>=1.4.0
+numpy>=1.22.0
+joblib>=1.1.0
+scikit-learn>=1.0.0

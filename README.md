@@ -20,9 +20,6 @@ The core of this project is a RESTful API that provides real-time fraud predicti
 
 The infrastructure is designed for scalability and high availability on AWS. The system supports two distinct prediction workflows: real-time single transaction scoring and asynchronous batch processing.
 
-![Cloud Architecture Diagram](https://i.imgur.com/your-diagram-link.png)
-*(To create your own diagram, you can use a free tool like [diagrams.net](https://app.diagrams.net/), then upload the image to a service like [Imgur](https://imgur.com/upload) to get a shareable link.)*
-
 1.  **Amazon ECR (Elastic Container Registry)**: Stores the versioned Docker images of the FastAPI application.
 2.  **Amazon ECS (Elastic Container Service)**: Orchestrates the deployment of the Docker containers. It runs the application on **AWS Fargate**, a serverless compute engine, which automatically manages the underlying infrastructure.
 3.  **Amazon SageMaker**: Hosts the trained XGBoost model as a real-time inference endpoint. The ECS task communicates with this endpoint to get predictions.
